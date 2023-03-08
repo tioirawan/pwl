@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ArticleController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
@@ -61,3 +62,6 @@ Route::resource('contact-us', ContactUsController::class);
 Route::get('/dashboard', DashboardController::class);
 Route::get('/pengalaman-kuliah', PengalamanKuliahController::class);
 Route::get('/profile/{nama}', ProfileController::class);
+
+// Pertemuan 4 Praktikum 1
+Route::get('/articles', [ArticleController::class, 'index']);

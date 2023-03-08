@@ -36,6 +36,12 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="{{ url('/articles') }}" class="nav-link {{ request()->is('articles') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-newspaper"></i>
+                        <p>Artikel</p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="{{ url('/profile/tio-misbaqul-irawan') }}" class="nav-link {{ request()->segment(1) == 'profile' ? 'active' : '' }}">
                         <i class="nav-icon fas fa-user"></i>
                         <p>Profile</p>
