@@ -13,7 +13,7 @@ class ContactUsController extends Controller
      */
     public function index()
     {
-        return "Selamat Datang di Halaman Contact Us";
+        return view('contact-us.index');
     }
 
     /**
@@ -23,7 +23,7 @@ class ContactUsController extends Controller
      */
     public function create()
     {
-        return "Buat Halaman Contact Us";
+        return view('contact-us.create');
     }
 
     /**
@@ -45,7 +45,7 @@ class ContactUsController extends Controller
      */
     public function show($id)
     {
-        return "Halaman Contact Us dengan ID $id";
+        return view('contact-us.show', ['id' => $id]);
     }
 
     /**
@@ -56,7 +56,7 @@ class ContactUsController extends Controller
      */
     public function edit($id)
     {
-        return "Edit Halaman Contact Us dengan ID $id";
+        return view('contact-us.edit', ['id' => $id]);
     }
 
     /**
