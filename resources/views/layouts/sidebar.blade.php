@@ -41,6 +41,14 @@
                         <p>Artikel</p>
                     </a>
                 </li>
+
+                <li class="nav-item">
+                    <a href="{{ url('/hobbies') }}" class="nav-link {{ request()->is('hobbies') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-gamepad"></i>
+                        <p>Hobi</p>
+                    </a>
+                </li>
+
                 <li class="nav-item">
                     <a href="{{ url('/profile/tio-misbaqul-irawan') }}" class="nav-link {{ request()->segment(1) == 'profile' ? 'active' : '' }}">
                         <i class="nav-icon fas fa-user"></i>

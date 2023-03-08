@@ -6,7 +6,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\ContactUsController;
-
+use App\Http\Controllers\HobyController;
 use App\Http\Controllers\P3P2\DashboardController;
 use App\Http\Controllers\P3P2\PengalamanKuliahController;
 use App\Http\Controllers\P3P2\ProfileController;
@@ -65,3 +65,6 @@ Route::get('/profile/{nama}', ProfileController::class);
 
 // Pertemuan 4 Praktikum 1
 Route::get('/articles', [ArticleController::class, 'index']);
+
+// Pertemuan 4 Tugas 1
+Route::get('/hobbies', [HobyController::class, 'index']);
