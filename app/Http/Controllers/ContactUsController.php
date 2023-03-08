@@ -13,7 +13,7 @@ class ContactUsController extends Controller
      */
     public function index()
     {
-        return "ini index contact-us";
+        return view('contact-us.index');
     }
 
     /**
@@ -23,7 +23,7 @@ class ContactUsController extends Controller
      */
     public function create()
     {
-        return "ini untuk halaman post kontak ke backend";
+        return view('contact-us.create');
     }
 
     /**
@@ -34,7 +34,7 @@ class ContactUsController extends Controller
      */
     public function store(Request $request)
     {
-        return "ini untuk memproses post kontak ke backend";
+        return "Simpan Halaman Contact Us";
     }
 
     /**
@@ -45,7 +45,7 @@ class ContactUsController extends Controller
      */
     public function show($id)
     {
-        return "ini untuk menampilkan detail kontak: $id";
+        return view('contact-us.show', ['id' => $id]);
     }
 
     /**
@@ -56,7 +56,7 @@ class ContactUsController extends Controller
      */
     public function edit($id)
     {
-        return "ini untuk mengedit kontak $id";
+        return view('contact-us.edit', ['id' => $id]);
     }
 
     /**
@@ -68,7 +68,7 @@ class ContactUsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        return "ini untuk melakukan update kontak $id";
+        return "Update Halaman Contact Us dengan ID $id";
     }
 
     /**
@@ -79,6 +79,6 @@ class ContactUsController extends Controller
      */
     public function destroy($id)
     {
-        return "ini untuk menghapus kontak $id";
+        return "Hapus Halaman Contact Us dengan ID $id";
     }
 }

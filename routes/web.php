@@ -1,8 +1,14 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PageController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\NewsController;
 use App\Http\Controllers\ContactUsController;
+
+use App\Http\Controllers\P3P2\DashboardController;
+use App\Http\Controllers\P3P2\PengalamanKuliahController;
+use App\Http\Controllers\P3P2\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,33 +21,43 @@ use App\Http\Controllers\ContactUsController;
 |
 */
 
-Route::pattern("id", "[0-9]+");
-Route::pattern("news", "[a-zA-Z0-9]+");
-
 // Halaman Home
 // Menampilkan halaman awal website
-Route::get('/', [PageController::class, 'index']);
+Route::get('/', HomeController::class);
 
 // Halaman Products
 // Menampilkan daftar product ( route prefix)
-Route::get('/products', [PageController::class, 'products']);
+Route::prefix('category')->group(function () {
+    Route::view('/marbel-edu-games', 'product');
+    Route::view('/marbel-and-friends-kids-games', 'product');
+    Route::view('/riri-story-books', 'product');
+    Route::view('/kolak-kids-songs', 'product');
+    Route::view('/', 'product');
+});
+
 
 // Halaman News
 // Menampilkan Daftar berita (route param)
-Route::get('/news/{news}', [PageController::class, 'news']);
+Route::get('/news/{news}', [NewsController::class, 'show']);
+Route::get('/news', [NewsController::class, 'index']);
 
 // Halaman Program
 // Menampilkan Daftar Program (route prefix)
-Route::group(["prefix" => "program"], function() {
-  Route::get('/{name}', [PageController::class, 'programDetail']);
-  Route::get('/', [PageController::class, 'program']);
+Route::prefix('program')->group(function () {
+    Route::view('/karir', 'program');
+    Route::view('/magang', 'program');
+    Route::view('/kunjungan-industri', 'program');
 });
 
+// Halaman About Us
 // Menampilkan About Us (route biasa)
-Route::get('/about-us', function () {
-  echo "Ini about";
-});
+Route::view('/about-us', 'about-us');
 
 // Halaman Contact Us
 // Menampilkan Contact Us (route resource only)
-Route::resource("/contact-us", ContactUsController::class);
+Route::resource('contact-us', ContactUsController::class);
+
+// Pertemuan 3 Praktikum 2
+Route::get('/dashboard', DashboardController::class);
+Route::get('/pengalaman-kuliah', PengalamanKuliahController::class);
+Route::get('/profile/{nama}', ProfileController::class);
