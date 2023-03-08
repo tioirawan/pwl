@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
             ArticleSeeder::class,
             HobySeeder::class,
             FamilyMemberSeeder::class,
+            CourseSeeder::class,
         ]);
         // \App\Models\User::factory(10)->create();
 
