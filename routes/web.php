@@ -10,6 +10,7 @@ use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\FamilyMemberController;
 use App\Http\Controllers\HobyController;
+use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\P3P2\DashboardController;
 use App\Http\Controllers\P3P2\PengalamanKuliahController;
 use App\Http\Controllers\P3P2\ProfileController;
@@ -82,4 +83,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/family', [FamilyMemberController::class, 'index']);
     // Pertemuan 4 Tugas 3
     Route::get('/courses', [CourseController::class, 'index']);
+
+    Route::resource('mahasiswa', MahasiswaController::class);
 });

@@ -77,6 +77,13 @@
                         <p>Pengalaman Kuliah</p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{ url('/mahasiswa') }}"
+                        class="nav-link  {{ request()->is('mahasiswa') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-users"></i>
+                        <p>Mahasiswa</p>
+                    </a>
+                </li>
 
             </ul>
         </nav>
