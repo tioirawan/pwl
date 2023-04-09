@@ -55,9 +55,12 @@
                             <label for="jk">Jenis Kelamin</label>
                             <select name="jk" class="form-control @error('jk') is-invalid @enderror">
                                 <option value="">-- Pilih Jenis Kelamin --</option>
-                                <option value="L" {{ isset($mhs) && $mhs->jk == 'L' ? 'selected' : '' }}>Laki-laki
-                                </option>
-                                <option value="P" {{ isset($mhs) && $mhs->jk == 'P' ? 'selected' : '' }}>Perempuan
+                                <option value="l"
+                                    {{ old('jk') == 'l' ? 'selected' : (isset($mhs) && $mhs->jk == 'l' ? 'selected' : '') }}>
+                                    Laki-laki</option>
+                                <option value="p"
+                                    {{ old('jk') == 'p' ? 'selected' : (isset($mhs) && $mhs->jk == 'p' ? 'selected' : '') }}>
+                                    Perempuan</option>
                                 </option>
                             </select>
                             @error('jk')
@@ -95,7 +98,8 @@
                         <div class="form-group">
                             <label for="hp">No. HP</label>
                             <input type="text" class="form-control @error('hp') is-invalid @enderror"
-                                value="{{ isset($mhs) ? $mhs->hp : old('hp') }}" name="hp">
+                                value="{{ isset($mhs) ? $mhs->hp : old('hp') }}" name="hp" minlength="6"
+                                maxlength="15">
                             @error('hp')
                                 <div class="error invalid-feedback">{{ $message }}</div>
                             @enderror
