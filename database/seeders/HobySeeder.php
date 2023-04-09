@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Hoby;
+use App\Models\Hobby;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -15,20 +15,19 @@ class HobySeeder extends Seeder
      */
     public function run()
     {
-        Hoby::create([
+        Hobby::create([
             'name' => 'Programming',
             'description' => 'Programming menyenangkan',
         ]);
 
-        Hoby::create([
+        Hobby::create([
             'name' => 'Swimming',
             'description' => 'Saya suka berenang',
         ]);
 
-        Hoby::create([
+        Hobby::create([
             'name' => 'Reading',
             'description' => 'Saya !suka membaca',
         ]);
-
     }
 }

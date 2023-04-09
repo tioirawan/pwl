@@ -9,7 +9,7 @@ use App\Http\Controllers\NewsController;
 use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\FamilyMemberController;
-use App\Http\Controllers\HobyController;
+use App\Http\Controllers\HobbyController;
 use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\P3P2\DashboardController;
 use App\Http\Controllers\P3P2\PengalamanKuliahController;
@@ -78,7 +78,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/articles', [ArticleController::class, 'index']);
 
     // Pertemuan 4 Tugas 1
-    Route::get('/hobbies', [HobyController::class, 'index']);
+    Route::resource('hobbies', HobbyController::class);
     // Pertemuan 4 Tugas 2
     Route::get('/family', [FamilyMemberController::class, 'index']);
     // Pertemuan 4 Tugas 3

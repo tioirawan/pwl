@@ -7,12 +7,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Hoby</h1>
+                        <h1>Hobby</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Hoby</li>
+                            <li class="breadcrumb-item active">Hobby</li>
                         </ol>
                     </div>
                 </div>
@@ -27,30 +27,46 @@
                     <h3 class="card-title">Daftar Hobiku</h3>
                 </div>
                 <div class="card-body">
-                    <table id="article-table" class="table table-bordered table-hover">
+                    <a href="{{ url('hobbies/create') }}" class="btn btn-sm btn-success my-2">Tambah Data</a>
+
+                    <table class="table table-bordered table-stiped">
                         <thead>
                             <tr>
+                                <th>No</th>
                                 <th>Nama</th>
                                 <th>Deskripsi</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
+                            @if ($hobbies->count() > 0)
+                                @foreach ($hobbies as $i => $h)
+                                    <tr>
+                                        <td>{{ ++$i }}</td>
+                                        <td>{{ $h->name }}</td>
+                                        <td>{{ $h->description }}</td>
+                                        <td>
+                                            <!-- Bikin tombol edit dan delete -->
+                                            <a href="{{ url('/hobbies/' . $h->id . '/edit') }}"
+                                                class="btn btn-sm btn-warning">edit</a>
 
-                            @foreach ($hobies as $hoby)
+                                            <form method="POST" action="{{ url('/hobbies/' . $h->id) }}">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-sm btn-danger">delete</button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            @else
                                 <tr>
-                                    <td>{{ $hoby->name }}</td>
-                                    <td>{{ $hoby->description }}</td>
+                                    <td colspan="4" class="text-center">Tidak ada data</td>
                                 </tr>
-                            @endforeach
-
+                            @endif
                         </tbody>
-                        <tfoot>
-                            <tr>
-                                <th>Nama</th>
-                                <th>Deskripsi</th>
-                            </tr>
-                        </tfoot>
                     </table>
+
+
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">
