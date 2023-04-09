@@ -50,7 +50,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="{{ url('/family') }}" class="nav-link {{ request()->is('family') ? 'active' : '' }}">
+                    <a href="{{ url('/families') }}" class="nav-link {{ request()->is('families') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-users"></i>
                         <p>Keluarga</p>
                     </a>

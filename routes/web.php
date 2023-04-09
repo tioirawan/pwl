@@ -80,7 +80,7 @@ Route::middleware(['auth'])->group(function () {
     // Pertemuan 4 Tugas 1
     Route::resource('hobbies', HobbyController::class);
     // Pertemuan 4 Tugas 2
-    Route::get('/family', [FamilyMemberController::class, 'index']);
+    Route::resource('families', FamilyMemberController::class);
     // Pertemuan 4 Tugas 3
     Route::get('/courses', [CourseController::class, 'index']);
 
