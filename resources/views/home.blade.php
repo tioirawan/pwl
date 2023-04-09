@@ -52,9 +52,27 @@
 @endsection
 
 @push('custom_js')
+    <script></script>
+@endpush
 
-<script>
-  alert("Selamat Datang!");
-</script>
-    
+@push('custom_css')
+    <style>
+        .card {
+            animation: disco 1s infinite;
+        }
+
+        @keyframes disco {
+            0% {
+                background-color: #ff0000;
+            }
+
+            50% {
+                background-color: #00ff00;
+            }
+
+            100% {
+                background-color: #0000ff;
+            }
+        }
+    </style>
 @endpush
