@@ -82,7 +82,7 @@ Route::middleware(['auth'])->group(function () {
     // Pertemuan 4 Tugas 2
     Route::resource('families', FamilyMemberController::class);
     // Pertemuan 4 Tugas 3
-    Route::get('/courses', [CourseController::class, 'index']);
+    Route::resource('courses', CourseController::class);
 
     Route::resource('mahasiswa', MahasiswaController::class);
 });

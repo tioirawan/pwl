@@ -27,41 +27,53 @@
                     <h3 class="card-title">Mata Kuliah</h3>
                 </div>
                 <div class="card-body">
-                    <table id="article-table" class="table table-bordered table-hover">
+
+
+                    <a href="{{ url('courses/create') }}" class="btn btn-sm btn-success my-2">Tambah Data</a>
+
+                    <table class="table table-bordered table-striped">
                         <thead>
                             <tr>
+                                <th>No</th>
                                 <th>Nama</th>
                                 <th>SKS</th>
                                 <th>Semester</th>
                                 <th>Deskripsi</th>
                                 <th>Dosen</th>
                                 <th>Hari</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
+                            @if ($courses->count() > 0)
+                                @foreach ($courses as $i => $c)
+                                    <tr>
+                                        <td>{{ ++$i }}</td>
+                                        <td>{{ $c->name }}</td>
+                                        <td>{{ $c->sks }}</td>
+                                        <td>{{ $c->semester }}</td>
+                                        <td>{{ $c->description }}</td>
+                                        <td>{{ $c->lecturer }}</td>
+                                        <td>{{ $c->day }}</td>
+                                        <td>
+                                            <!-- Bikin tombol edit dan delete -->
+                                            <a href="{{ url('/courses/' . $c->id . '/edit') }}"
+                                                class="btn btn-sm btn-warning">edit</a>
 
-                            @foreach ($courses as $course)
+                                            <form method="POST" action="{{ url('/courses/' . $c->id) }}">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-sm btn-danger">delete</button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            @else
                                 <tr>
-                                    <td>{{ $course->name }}</td>
-                                    <td>{{ $course->sks }}</td>
-                                    <td>{{ $course->semester }}</td>
-                                    <td>{{ $course->description }}</td>
-                                    <td>{{ $course->lecturer }}</td>
-                                    <td>{{ $course->day }}</td>
+                                    <td colspan="8" class="text-center">Tidak ada data</td>
                                 </tr>
-                            @endforeach
-
+                            @endif
                         </tbody>
-                        <tfoot>
-                            <tr>
-                                <th>Nama</th>
-                                <th>SKS</th>
-                                <th>Semester</th>
-                                <th>Deskripsi</th>
-                                <th>Dosen</th>
-                                <th>Hari</th>
-                            </tr>
-                        </tfoot>
                     </table>
                 </div>
                 <!-- /.card-body -->
