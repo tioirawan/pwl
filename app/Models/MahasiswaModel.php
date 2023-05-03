@@ -11,7 +11,6 @@ class MahasiswaModel extends Model
 
     protected $table = 'mahasiswa';
 
-
     protected $fillable = [
         'nim',
         'nama',

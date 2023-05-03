@@ -27,37 +27,6 @@
                     <h3 class="card-title">Anggota Keluarga</h3>
                 </div>
                 <div class="card-body">
-                    {{-- <table id="article-table" class="table table-bordered table-hover">
-                        <thead>
-                            <tr>
-                                <th>Nama</th>
-                                <th>Alamat</th>
-                                <th>Telepon</th>
-                                <th>Hubungan</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-
-                            @foreach ($families as $family)
-                                <tr>
-                                    <td>{{ $family->name }}</td>
-                                    <td>{{ $family->address }}</td>
-                                    <td>{{ $family->phone }}</td>
-                                    <td>{{ $family->relation }}</td>
-                                </tr>
-                            @endforeach
-
-                        </tbody>
-                        <tfoot>
-                            <tr>
-                                <th>Nama</th>
-                                <th>Alamat</th>
-                                <th>Telepon</th>
-                                <th>Hubungan</th>
-                            </tr>
-                        </tfoot>
-                    </table> --}}
-
                     <a href="{{ url('families/create') }}" class="btn btn-sm btn-success my-2">Tambah Data</a>
 
                     <table class="table table-bordered table-stiped">
