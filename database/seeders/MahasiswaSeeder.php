@@ -18,7 +18,7 @@ class MahasiswaSeeder extends Seeder
         MahasiswaModel::create([
             'nim' => '1234567890',
             'nama' => 'John Doe',
-            'jk' => 'L',
+            'jk' => 'l',
             'tempat_lahir' => 'Jakarta',
             'tanggal_lahir' => '2000-01-01',
             'alamat' => 'Jl. Lorem Ipsum',
@@ -28,7 +28,7 @@ class MahasiswaSeeder extends Seeder
         MahasiswaModel::create([
             'nim' => '0987654321',
             'nama' => 'Jane Doe',
-            'jk' => 'P',
+            'jk' => 'p',
             'tempat_lahir' => 'Jakarta',
             'tanggal_lahir' => '2000-01-01',
             'alamat' => 'Jl. Lorem Ipsum',

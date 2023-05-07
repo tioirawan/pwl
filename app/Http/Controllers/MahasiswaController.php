@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Kelas;
 use App\Models\MahasiswaModel;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,7 @@ class MahasiswaController extends Controller
      */
     public function index()
     {
-        $mhs = MahasiswaModel::all();
+        $mhs = MahasiswaModel::with('kelas')->get();
 
         return view('mahasiswa.index', compact('mhs'));
     }
@@ -26,7 +27,9 @@ class MahasiswaController extends Controller
      */
     public function create()
     {
-        return view('mahasiswa.create')
+        $kelas = Kelas::all();
+
+        return view('mahasiswa.create', compact('kelas'))
             ->with('url_form', url('/mahasiswa'));
     }
 
@@ -41,6 +44,7 @@ class MahasiswaController extends Controller
         $request->validate([
             'nim' => 'required|string|max:10|unique:mahasiswa,nim',
             'nama' => 'required|string|max:50',
+            'kelas_id' => 'required|exists:kelas,id',
             'jk' => 'required|in:l,p',
             'tempat_lahir' => 'required|string|max:50',
             'tanggal_lahir' => 'required|date',
@@ -61,7 +65,9 @@ class MahasiswaController extends Controller
      */
     public function show(MahasiswaModel $mahasiswa)
     {
-        // TODO: Implement show() method.
+        $mahasiswa->load('kelas');
+
+        return view('mahasiswa.show', compact('mahasiswa'));
     }
 
     /**
@@ -72,9 +78,12 @@ class MahasiswaController extends Controller
      */
     public function edit(MahasiswaModel $mahasiswa)
     {
-        $mhs = $mahasiswa;
-        return view('mahasiswa.create', compact('mhs'))
-            ->with('url_form', url('/mahasiswa/' . $mhs->id));
+        $kelas = Kelas::all();
+
+        $mahasiswa->load('kelas');
+
+        return view('mahasiswa.create', compact('mahasiswa',  'kelas'))
+            ->with('url_form', url('/mahasiswa/' . $mahasiswa->id));
     }
 
     /**
@@ -89,6 +98,7 @@ class MahasiswaController extends Controller
         $request->validate([
             'nim' => 'required|unique:mahasiswa,nim,' . $mahasiswa->id,
             'nama' => 'required',
+            'kelas_id' => 'required|exists:kelas,id',
             'jk' => 'required',
             'tempat_lahir' => 'required',
             'tanggal_lahir' => 'required',

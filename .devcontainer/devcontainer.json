@@ -12,9 +12,6 @@
 			"version": "latest",
 			"dockerDashComposeVersion": "v1"
 		},
-		"ghcr.io/devcontainers-contrib/features/mysql-homebrew:1": {
-			"version": "latest"
-		},
 		"ghcr.io/shyim/devcontainers-features/php:0": {
 			"installComposer": true,
 			"version": "8.1"

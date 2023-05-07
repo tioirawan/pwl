@@ -36,6 +36,7 @@
                                 <th>No</th>
                                 <th>NIM</th>
                                 <th>Nama</th>
+                                <th>Kelas</th>
                                 <th>JK</th>
                                 <th>HP</th>
                                 <th>Action</th>
@@ -48,17 +49,20 @@
                                         <td>{{ ++$i }}</td>
                                         <td>{{ $m->nim }}</td>
                                         <td>{{ $m->nama }}</td>
+                                        <td>{{ $m->kelas->nama }}</td>
                                         <td>{{ $m->jk }}</td>
                                         <td>{{ $m->hp }}</td>
-                                        <td>
-                                            <!-- Bikin tombol edit dan delete -->
+                                        <td class="d-flex align-items-center gap-2">
+                                            <a href="{{ url('/mahasiswa/' . $m->id) }}"
+                                                class="btn btn-sm btn-primary">Lihat</a>
+
                                             <a href="{{ url('/mahasiswa/' . $m->id . '/edit') }}"
-                                                class="btn btn-sm btn-warning">edit</a>
+                                                class="btn btn-sm btn-secondary mx-2">Edit</a>
 
                                             <form method="POST" action="{{ url('/mahasiswa/' . $m->id) }}">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="btn btn-sm btn-danger">hapus</button>
+                                                <button type="submit" class="btn btn-sm btn-danger">Hapus</button>
                                             </form>
                                         </td>
                                     </tr>
