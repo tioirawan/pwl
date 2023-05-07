@@ -17,4 +17,12 @@ class Course extends Model
         'lecturer',
         'day',
     ];
+
+    public function mahasiswa()
+    {
+        return $this
+            ->belongsToMany(MahasiswaModel::class, 'mahasiswa_course', 'course_id', 'mahasiswa_id')
+            ->withPivot('nilai')
+            ->using(MahasiswaCourse::class);
+    }
 }

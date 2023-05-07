@@ -85,4 +85,6 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('courses', CourseController::class);
 
     Route::resource('mahasiswa', MahasiswaController::class);
+    // Pertemuan 9 Tugas
+    Route::get('/mahasiswa/{mahasiswa}/khs', [MahasiswaController::class, 'khs'])->name('mahasiswa.khs');
 });

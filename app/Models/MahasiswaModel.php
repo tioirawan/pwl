@@ -26,4 +26,12 @@ class MahasiswaModel extends Model
     {
         return $this->belongsTo(Kelas::class);
     }
+
+    public function courses()
+    {
+        return $this
+            ->belongsToMany(Course::class, 'mahasiswa_course', 'mahasiswa_id', 'course_id')
+            ->withPivot('nilai')
+            ->using(MahasiswaCourse::class);
+    }
 }

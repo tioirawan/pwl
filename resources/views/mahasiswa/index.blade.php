@@ -56,6 +56,9 @@
                                             <a href="{{ url('/mahasiswa/' . $m->id) }}"
                                                 class="btn btn-sm btn-primary">Lihat</a>
 
+                                                <a href="{{ route('mahasiswa.khs', $m) }}"
+                                                class="btn btn-sm btn-info ml-2">KHS</a>
+
                                             <a href="{{ url('/mahasiswa/' . $m->id . '/edit') }}"
                                                 class="btn btn-sm btn-secondary mx-2">Edit</a>
 

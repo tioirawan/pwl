@@ -71,6 +71,19 @@ class MahasiswaController extends Controller
     }
 
     /**
+     * Display nilai KHS Mahasiswa
+     * 
+     * @param \App\Models\MahasiswaModel $mahasiswa
+     * @return \Illuminate\Http\Response
+     */
+    public function khs(MahasiswaModel $mahasiswa)
+    {
+        $mahasiswa->load('courses');
+
+        return view('mahasiswa.khs', compact('mahasiswa'));
+    }
+
+    /**
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\MahasiswaModel  $mahasiswa
