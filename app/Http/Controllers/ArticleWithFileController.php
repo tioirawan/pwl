@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\ArticleWithFile;
 use Illuminate\Http\Request;
 
+use PDF;
+
 class ArticleWithFileController extends Controller
 {
     /**
@@ -110,5 +112,12 @@ class ArticleWithFileController extends Controller
     public function destroy(ArticleWithFile $articleWithFile)
     {
         //
+    }
+
+    public function cetak_pdf()
+    {
+        $articlesWithFile = ArticleWithFile::all();
+        $pdf = PDF::loadview('articles-with-file.articles_pdf', ['articles' => $articlesWithFile]);
+        return $pdf->stream();
     }
 }

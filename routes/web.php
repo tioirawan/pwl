@@ -90,5 +90,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/mahasiswa/{mahasiswa}/khs', [MahasiswaController::class, 'khs'])->name('mahasiswa.khs');
 
     // Pertemuan 10
+    Route::get('/articles-with-file/cetak_pdf', [ArticleWithFileController::class, 'cetak_pdf']);
     Route::resource('/articles-with-file', ArticleWithFileController::class);
 });
