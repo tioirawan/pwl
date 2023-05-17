@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\ArticleWithFileController;
 use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
@@ -87,4 +88,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('mahasiswa', MahasiswaController::class);
     // Pertemuan 9 Tugas
     Route::get('/mahasiswa/{mahasiswa}/khs', [MahasiswaController::class, 'khs'])->name('mahasiswa.khs');
+
+    // Pertemuan 10
+    Route::resource('/articles-with-file', ArticleWithFileController::class);
 });
