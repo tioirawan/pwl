@@ -56,9 +56,9 @@ class ArticleWithFileController extends Controller
      * @param  \App\Models\ArticleWithFile  $articleWithFile
      * @return \Illuminate\Http\Response
      */
-    public function show(ArticleWithFile $articleWithFile)
+    public function show(ArticleWithFile $articlesWithFile)
     {
-        //
+        return $articlesWithFile;
     }
 
     /**
@@ -67,9 +67,9 @@ class ArticleWithFileController extends Controller
      * @param  \App\Models\ArticleWithFile  $articleWithFile
      * @return \Illuminate\Http\Response
      */
-    public function edit(ArticleWithFile $articleWithFile)
+    public function edit(ArticleWithFile $articlesWithFile)
     {
-        //
+        return view('articles-with-file.edit', ['article' => $articlesWithFile]);
     }
 
     /**
@@ -79,9 +79,26 @@ class ArticleWithFileController extends Controller
      * @param  \App\Models\ArticleWithFile  $articleWithFile
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ArticleWithFile $articleWithFile)
+    public function update(Request $request,  $id)
     {
-        //
+        $articleWithFile = ArticleWithFile::find($id);
+
+        $articleWithFile->update([
+            'title' => $request->title,
+            'content' => $request->content,
+        ]);
+
+        if ($request->file('image')) {
+            if ($articleWithFile->featured_image && file_exists(storage_path('app/public/' . $articleWithFile->featured_image))) {
+                \Storage::delete('public/' . $articleWithFile->featured_image);
+            }
+            $image_name = $request->file('image')->store('images', 'public');
+            $articleWithFile->update(['featured_image' => $image_name]);
+        }
+
+        $articleWithFile->save();
+
+        return 'Artikel berhasil diupdate';
     }
 
     /**
