@@ -36,6 +36,7 @@
                                 <th>No</th>
                                 <th>NIM</th>
                                 <th>Nama</th>
+                                <th>Foto</th>
                                 <th>Kelas</th>
                                 <th>JK</th>
                                 <th>HP</th>
@@ -49,6 +50,9 @@
                                         <td>{{ ++$i }}</td>
                                         <td>{{ $m->nim }}</td>
                                         <td>{{ $m->nama }}</td>
+                                        <td>
+                                            <img src="{{ $m->photo_url }}" alt="" width="100">
+                                        </td>
                                         <td>{{ $m->kelas->nama }}</td>
                                         <td>{{ $m->jk }}</td>
                                         <td>{{ $m->hp }}</td>
@@ -56,7 +60,7 @@
                                             <a href="{{ url('/mahasiswa/' . $m->id) }}"
                                                 class="btn btn-sm btn-primary">Lihat</a>
 
-                                                <a href="{{ route('mahasiswa.khs', $m) }}"
+                                            <a href="{{ route('mahasiswa.khs', $m) }}"
                                                 class="btn btn-sm btn-info ml-2">KHS</a>
 
                                             <a href="{{ url('/mahasiswa/' . $m->id . '/edit') }}"

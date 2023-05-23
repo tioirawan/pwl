@@ -27,7 +27,7 @@
                     <h3 class="card-title">Tambah Mahasiswa</h3>
                 </div>
                 <div class="card-body">
-                    <form method="POST" action="{{ $url_form }}">
+                    <form method="POST" action="{{ $url_form }}" enctype="multipart/form-data">
                         @csrf
 
                         {!! isset($mahasiswa) ? method_field('PUT') : '' !!}
@@ -48,6 +48,16 @@
                             <input type="text" class="form-control @error('nama') is-invalid @enderror"
                                 value="{{ isset($mahasiswa) ? $mahasiswa->nama : old('nama') }}" name="nama">
                             @error('nama')
+                                <div class="error invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <div class="form-group">
+                            <label for="nama">Foto</label>
+                            <input type="file" class="form-control @error('photo') is-invalid @enderror"
+                                value="{{ old('photo') }}" name="photo" accept="image/png, image/jpeg, image/jpg">
+
+                            @error('photo')
                                 <div class="error invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>

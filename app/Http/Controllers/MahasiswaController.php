@@ -50,9 +50,15 @@ class MahasiswaController extends Controller
             'tanggal_lahir' => 'required|date',
             'alamat' => 'required|string|max:255',
             'hp' => 'required|digits_between:6,15',
+            'photo' => 'nullable|image|max:2048'
         ]);
 
-        MahasiswaModel::create($request->except(['_token']));
+        $mahasiswa = MahasiswaModel::create($request->except(['_token', 'photo']));
+
+        if ($request->hasFile('photo')) {
+            $mahasiswa->photo = $request->file('photo')->store('mahasiswa', 'public');
+            $mahasiswa->save();
+        }
 
         return redirect()->route('mahasiswa.index');
     }
@@ -117,9 +123,19 @@ class MahasiswaController extends Controller
             'tanggal_lahir' => 'required',
             'alamat' => 'required',
             'hp' => 'required',
+            'photo' => 'nullable|image|max:2048'
         ]);
 
-        $mahasiswa->update($request->except(['_token', '_method']));
+        $mahasiswa->update($request->except(['_token', '_method', 'photo']));
+
+        if ($request->hasFile('photo')) {
+            if ($mahasiswa->photo && file_exists(storage_path('app/public/' . $mahasiswa->photo))) {
+                \Storage::delete('public/' . $mahasiswa->photo);
+            }
+
+            $mahasiswa->photo = $request->file('photo')->store('mahasiswa', 'public');
+            $mahasiswa->save();
+        }
 
         return redirect()->route('mahasiswa.index');
     }
