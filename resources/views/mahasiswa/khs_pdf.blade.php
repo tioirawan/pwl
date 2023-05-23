@@ -69,8 +69,6 @@
             </tbody>
             @endforeach
         </table>
-
-        <a href="{{ route('mahasiswa.khs.cetak', $mahasiswa) }}" class="btn btn-sm btn-info ml-2">CETAK KHS</a>
     </div>
 
 </body>

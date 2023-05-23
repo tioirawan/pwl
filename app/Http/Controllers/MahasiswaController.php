@@ -89,6 +89,15 @@ class MahasiswaController extends Controller
         return view('mahasiswa.khs', compact('mahasiswa'));
     }
 
+    public function cetak_khs(MahasiswaModel $mahasiswa)
+    {
+        $mahasiswa->load('courses');
+
+        $pdf = \PDF::loadView('mahasiswa.khs_pdf', compact('mahasiswa'));
+
+        return $pdf->download('khs-' . $mahasiswa->nim . '.pdf');
+    }
+
     /**
      * Show the form for editing the specified resource.
      *
