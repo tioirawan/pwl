@@ -93,4 +93,7 @@ Route::middleware(['auth'])->group(function () {
     // Pertemuan 10
     Route::get('/articles-with-file/cetak_pdf', [ArticleWithFileController::class, 'cetak_pdf']);
     Route::resource('/articles-with-file', ArticleWithFileController::class);
+
+    // Pertemuan 12
+    Route::post('/mahasiswa/data', [MahasiswaController::class, 'data']);
 });

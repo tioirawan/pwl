@@ -18457,6 +18457,201 @@
      
 }
 
+    namespace Yajra\DataTables\Facades { 
+            /**
+     * 
+     *
+     * @mixin \Yajra\DataTables\DataTables
+     * @see \Yajra\DataTables\DataTables
+     */ 
+        class DataTables {
+                    /**
+         * Make a DataTable instance from source.
+         * 
+         * Alias of make for backward compatibility.
+         *
+         * @param object $source
+         * @return \Yajra\DataTables\DataTableAbstract 
+         * @throws \Exception
+         * @static 
+         */ 
+        public static function of($source)
+        {
+                        return \Yajra\DataTables\DataTables::of($source);
+        }
+                    /**
+         * Make a DataTable instance from source.
+         *
+         * @param object $source
+         * @return \Yajra\DataTables\DataTableAbstract 
+         * @throws \Yajra\DataTables\Exceptions\Exception
+         * @static 
+         */ 
+        public static function make($source)
+        {
+                        return \Yajra\DataTables\DataTables::make($source);
+        }
+                    /**
+         * Get request object.
+         *
+         * @return \Yajra\DataTables\Utilities\Request 
+         * @static 
+         */ 
+        public static function getRequest()
+        {
+                        /** @var \Yajra\DataTables\DataTables $instance */
+                        return $instance->getRequest();
+        }
+                    /**
+         * Get config instance.
+         *
+         * @return \Yajra\DataTables\Utilities\Config 
+         * @static 
+         */ 
+        public static function getConfig()
+        {
+                        /** @var \Yajra\DataTables\DataTables $instance */
+                        return $instance->getConfig();
+        }
+                    /**
+         * DataTables using Query.
+         *
+         * @param \Illuminate\Contracts\Database\Query\Builder $builder
+         * @return \Yajra\DataTables\QueryDataTable 
+         * @static 
+         */ 
+        public static function query($builder)
+        {
+                        /** @var \Yajra\DataTables\DataTables $instance */
+                        return $instance->query($builder);
+        }
+                    /**
+         * DataTables using Eloquent Builder.
+         *
+         * @param \Illuminate\Contracts\Database\Eloquent\Builder $builder
+         * @return \Yajra\DataTables\EloquentDataTable 
+         * @static 
+         */ 
+        public static function eloquent($builder)
+        {
+                        /** @var \Yajra\DataTables\DataTables $instance */
+                        return $instance->eloquent($builder);
+        }
+                    /**
+         * DataTables using Collection.
+         *
+         * @param \Illuminate\Support\Collection<array-key,  array>|array  $collection
+         * @return \Yajra\DataTables\CollectionDataTable 
+         * @static 
+         */ 
+        public static function collection($collection)
+        {
+                        /** @var \Yajra\DataTables\DataTables $instance */
+                        return $instance->collection($collection);
+        }
+                    /**
+         * DataTables using Collection.
+         *
+         * @param \Illuminate\Http\Resources\Json\AnonymousResourceCollection<array-key,  array>|array  $resource
+         * @return \Yajra\DataTables\ApiResourceDataTable|\Yajra\DataTables\DataTableAbstract 
+         * @static 
+         */ 
+        public static function resource($resource)
+        {
+                        /** @var \Yajra\DataTables\DataTables $instance */
+                        return $instance->resource($resource);
+        }
+                    /**
+         * Get html builder instance.
+         *
+         * @return \Yajra\DataTables\Html\Builder 
+         * @throws \Yajra\DataTables\Exceptions\Exception
+         * @static 
+         */ 
+        public static function getHtmlBuilder()
+        {
+                        /** @var \Yajra\DataTables\DataTables $instance */
+                        return $instance->getHtmlBuilder();
+        }
+                    /**
+         * 
+         *
+         * @param string $engine
+         * @param string $parent
+         * @return void 
+         * @throws \Yajra\DataTables\Exceptions\Exception
+         * @static 
+         */ 
+        public static function validateDataTable($engine, $parent)
+        {
+                        /** @var \Yajra\DataTables\DataTables $instance */
+                        $instance->validateDataTable($engine, $parent);
+        }
+                    /**
+         * 
+         *
+         * @param string $engine
+         * @param string $parent
+         * @return void 
+         * @throws \Yajra\DataTables\Exceptions\Exception
+         * @static 
+         */ 
+        public static function throwInvalidEngineException($engine, $parent)
+        {
+                        /** @var \Yajra\DataTables\DataTables $instance */
+                        $instance->throwInvalidEngineException($engine, $parent);
+        }
+                    /**
+         * Register a custom macro.
+         *
+         * @param string $name
+         * @param object|callable $macro
+         * @return void 
+         * @static 
+         */ 
+        public static function macro($name, $macro)
+        {
+                        \Yajra\DataTables\DataTables::macro($name, $macro);
+        }
+                    /**
+         * Mix another object into the class.
+         *
+         * @param object $mixin
+         * @param bool $replace
+         * @return void 
+         * @throws \ReflectionException
+         * @static 
+         */ 
+        public static function mixin($mixin, $replace = true)
+        {
+                        \Yajra\DataTables\DataTables::mixin($mixin, $replace);
+        }
+                    /**
+         * Checks if macro is registered.
+         *
+         * @param string $name
+         * @return bool 
+         * @static 
+         */ 
+        public static function hasMacro($name)
+        {
+                        return \Yajra\DataTables\DataTables::hasMacro($name);
+        }
+                    /**
+         * Flush the existing macros.
+         *
+         * @return void 
+         * @static 
+         */ 
+        public static function flushMacros()
+        {
+                        \Yajra\DataTables\DataTables::flushMacros();
+        }
+         
+    }
+     
+}
+
     namespace Illuminate\Http { 
             /**
      * 
@@ -22417,6 +22612,7 @@ namespace  {
             class PDF extends \Barryvdh\DomPDF\Facade\Pdf {}
             class Pdf extends \Barryvdh\DomPDF\Facade\Pdf {}
             class Flare extends \Spatie\LaravelIgnition\Facades\Flare {}
+            class DataTables extends \Yajra\DataTables\Facades\DataTables {}
      
 }
 
