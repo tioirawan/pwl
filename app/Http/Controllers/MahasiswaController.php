@@ -84,6 +84,18 @@ class MahasiswaController extends Controller
         ]);
     }
 
+    public function destroy($id)
+    {
+        $mhs = MahasiswaModel::destroy($id);
+
+        return response()->json([
+            'status' => ($mhs),
+            'modal_close' => $mhs,
+            'message' => ($mhs) ? 'Data berhasil dihapus' : 'Data gagal dihapus',
+            'data' => null
+        ]);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -219,10 +231,10 @@ class MahasiswaController extends Controller
      * @param  \App\Models\MahasiswaModel  $mahasiswa
      * @return \Illuminate\Http\Response
      */
-    public function destroy(MahasiswaModel $mahasiswa)
-    {
-        $mahasiswa->delete();
+    // public function destroy(MahasiswaModel $mahasiswa)
+    // {
+    //     $mahasiswa->delete();
 
-        return redirect()->route('mahasiswa.index');
-    }
+    //     return redirect()->route('mahasiswa.index');
+    // }
 }

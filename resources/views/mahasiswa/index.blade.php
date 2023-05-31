@@ -144,8 +144,10 @@
             $('#modal_mahasiswa #form_mahasiswa').append('<input type="hidden" name="_method" value="PUT">');
         }
 
+        var dataMahasiswa;
+
         $(document).ready(function() {
-            var dataMahasiswa = $('#data_mahasiswa').DataTable({
+            dataMahasiswa = $('#data_mahasiswa').DataTable({
                 processing: true,
                 serverSide: true,
                 ajax: {
@@ -188,10 +190,16 @@
                                 row.nim + `" data-nama="` + row.nama + `" data-hp="` + row.hp +
                                 `"><i class="fa fa-edit"></i> Edit</button>` +
                                 `<a href="{{ url('/mahasiswa/') }} " class="btn btn-xs btn-info"><i class="fa fa-list"></i> Detail</a>` +
-                                `<form method="POST" action="{{ url('/mahasiswa/') }}/` + data + `">
-                                        @csrf @method('DELETE')
-                                <button type="submit" class="btn btn-xs btn-danger" onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')"><i class="fa fa-trash"></i> Hapus</button>
-                            </form>`;
+
+                                // `<form method="POST" action="{{ url('/mahasiswa/') }}/` + data + `">
+                            //         @csrf @method('DELETE')
+                            //     <button type="submit" class="btn btn-xs btn-danger" onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')"><i class="fa fa-trash"></i> Hapus</button>
+                            // </form>
+
+                            `<button onclick="deleteData(this)" class="btn btn-xs btn-danger"
+                                                data-url="{{ url('/mahasiswa') }}/` + data + `"
+                                                ><i class="fa fa-trash"></i> Hapus</button>
+                                                        `;
                             return btn;
                         }
                     },
@@ -230,7 +238,35 @@
                     }
                 });
             });
+
+
         });
+
+        function deleteData(th) {
+            var url = $(th).data('url');
+            var c = confirm('Apakah anda yakin ingin menghapus data ini?');
+            if (c == true) {
+                $.ajax({
+                    url: url,
+                    method: "POST",
+                    data: {
+                        _method: 'DELETE',
+                        _token: '{{ csrf_token() }}'
+                    },
+                    dataType: 'json',
+                    success: function(data) {
+                        if (data.status) {
+                            alert(data.message);
+                            dataMahasiswa.ajax.reload();
+                        } else {
+                            alert(data.message);
+                        }
+                    }
+                });
+            }
+        }
+
+
 
 
 
